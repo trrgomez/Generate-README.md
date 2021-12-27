@@ -1,12 +1,7 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {
-  return `![Github licence](http://img.shields.io/badge/license-${license}-blue.svg)`
-}
-
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   console.log(data)
+  // the begining of the readme templete
   let markdownTemplete = `
   # ${data.title}
  
@@ -14,17 +9,17 @@ function generateMarkdown(data) {
   ${data.description}
  `;
 
+//  table of contents
  let tableOfcontents = `
  ## Table of Contents
  * [Installation](#installation)
  * [Usage](#usage)
  * [Contributing](#contributing)
  * [Tests](#tests)
+ * [License](#license)
  `;
 
-if (data.license !== '') { tableOfcontents += `
-* [License](#license)` };
-
+// append table of contents to markdown templete
 markdownTemplete += tableOfcontents;
 
 markdownTemplete +=
@@ -49,20 +44,14 @@ markdownTemplete +=
 `    
 ## Tests  
 ${data.tests} 
-`
+`;
 
-
-// if license is provided
-if(data.license !== ''){
 markdownTemplete += 
 `
 ## License
-${renderLicenseBadge(data.license)}
-
-`
-}
-  
-  
+![Github licence](http://img.shields.io/badge/license-${data.license}-blue.svg)
+`;
+ 
 // Questions section
   
 let questionSection = 
@@ -74,10 +63,12 @@ contact me at: ${data.email}
 GitHub Profile: [https://github.com/${data.username}](https://github.com/${data.username})
   
 `
+// append question section to templete
   markdownTemplete += questionSection
   
   return markdownTemplete
 
 }
 
+// exports page
 module.exports = generateMarkdown;
