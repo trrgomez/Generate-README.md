@@ -49,7 +49,7 @@ ${data.tests}
 markdownTemplete += 
 `
 ## License
-![Github licence](http://img.shields.io/badge/license-${data.license}-blue.svg)
+License used: ${data.license}
 `;
  
 // Questions section
